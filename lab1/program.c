@@ -35,7 +35,7 @@ void stavi_broj_u_ms (uint64_t broj) //Kad je međuspremnik pun novi se brojevi 
 uint64_t uzmi_iz_ms () //Kad je prazan ne uzimaju se vrijednosti već vraća 0.
 {
     if (brojac > 0){
-        uint16_t broj = MS[izlaz];
+        uint64_t broj = MS[izlaz];
         MS[izlaz] = 0; //radi ispisa označiti da je opet slobodno
         izlaz = (izlaz+1) % 10;
         brojac--;
@@ -45,9 +45,9 @@ uint64_t uzmi_iz_ms () //Kad je prazan ne uzimaju se vrijednosti već vraća 0.
         return 0;
 }
 
-int prost (uint16_t x)
+int prost (uint64_t x)
 {
-    uint16_t i;
+    uint64_t i;
     for(i = 2; i < x/2; i++){
         if(x % i == 0){
             return 1;
@@ -66,7 +66,7 @@ uint64_t generiraj_dobar_broj()
 {
     int i = 0, j;
     int odabrano = 0;
-    int broj = 0;
+    uint64_t broj = 0;
     uint64_t maska = 0x03ff, x;
     while ((odabrano == 0) && (i < 10))
     {
@@ -94,8 +94,8 @@ int main(int argc, char *argv[])
 
     //glavni program
 
-    uint16_t broj;
-    int broj_ispisa = 0,  broj_odabranih = 0;
+    uint64_t broj;
+    uint64_t broj_ispisa = 0,  broj_odabranih = 0;
 
     time_t t;
     time(&t);
